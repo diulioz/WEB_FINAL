@@ -1,3 +1,42 @@
+{% extends "base.html" %}
+{% block titulo %} CREAR {% endblock %}
+{% block contenido %} 
+<h1>Listado e Información de Empleados</h1>
+        <hr>
+        <table class="table table-success table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Salario</th>
+                <th scope="col">Bonus</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Ubicacion</th>
+                <th scope="col">Fecha Contrato</th>
+              </tr>
+            </thead>
+                {% for emp in empleados %}
+            <tbody>
+              <tr>
+                <th scope="row">{{emp.id}}</th>
+                <td>{{emp.nombreE}}</td>
+                <td>{{emp.apellido}}</td>
+                <td>{{emp.salario}}</td>
+                <td>{{emp.bono}}</td>
+                <td>{{emp.numeroCel}}</td>
+                <td>{{emp.rol.nombreR}}</td>
+                <td>{{emp.dept.nombreD}}</td>
+                <td>{{emp.dept.ubicacion}}</td>
+                <td>{{emp.fechaContra}}</td>
+              </tr>
+            </tbody>
+                {% endfor %}
+          </table>
+      </div>
+{% endblock %}
 <!doctype html>
 <html lang="en">
   <head>

@@ -1,3 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %} CREAR {% endblock %}
+{% block contenido %} 
+<h1>Eliminar un Empleado</h1>
+        <hr>
+        <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Seleccionar Empleado a Eliminar
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {%for emp in empleados %}
+                <li><a class="dropdown-item" href="/remover/{{emp.id}}">{{emp.nombreE}} {{emp.apellido}}</a></li>
+                {% endfor %}
+            </ul>
+          </div>
+      </div>
+{% endblock %}
+
 <!doctype html>
 <html lang="en">
   <head>

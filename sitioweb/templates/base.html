@@ -18,15 +18,18 @@
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="nav navbar-nav">
-            <!-- <a class="nav-item nav-link active" href="{% url 'inicio'%}">INICIO</a> -->
-            <a class="nav-item nav-link active" href="{% url 'nosotros'%}">NOSOTROS</a>
+          <a class="nav-item nav-link active"  href="/todos" role="button">Ver Empleados</a>
+            <a class="nav-item nav-link active" href="/agregar" role="button">Agregar Empleado</a>
+            <a class="nav-item nav-link active" href="/remover" role="button">Eliminar Empleados</a>
+            <a class="nav-item nav-link active" href="/filtrar" role="button">Filtrar Detalles de Empleados</a>
+            <a class="nav-item nav-link active" href="/autores" role="button">Nosotros</a>
           {% if not request.user.is_authenticated %}
             <li class="nav-item">
-              <!-- <a class="nav-link" aria-current="page" href="{% url 'login' %}">Acceder</a> -->
+              <a class="nav-link" aria-current="page" href="{% url 'login' %}">Acceder</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <!-- <a class="nav-link" aria-current="page" href="{% url 'salir' %}">Cerrar Sesión</a> -->
+              <a class="nav-link" aria-current="page" href="{% url 'salir' %}">Cerrar Sesión</a>
             </li>
           {% endif %}
 

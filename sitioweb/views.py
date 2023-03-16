@@ -10,13 +10,13 @@ from django.contrib import messages
 from datetime import datetime
 
 # Create your views here.
-
+@login_required
 def inicio(request):
     return render(request, 'index.html')
 
 def autores(request):
     return render(request, 'autores.html')
-
+@login_required
 def todos(request):
     empleados = Empleado.objects.all()
     informacion = {
@@ -24,6 +24,7 @@ def todos(request):
     }
     return render(request, 'todos.html', informacion)
 
+@login_required
 def agregar(request):
     if request.method == 'POST':
         nombreE = request.POST['nombreE']
@@ -40,7 +41,8 @@ def agregar(request):
         return render(request, 'agregar.html')
     else:
         return HttpResponse('Ha ocurrido un problema')  
-
+    
+@login_required
 def remover(request, emp_id=0):
     if emp_id:
         try:
@@ -55,7 +57,7 @@ def remover(request, emp_id=0):
     }
 
     return render(request, 'remover.html', informacion)
-
+@login_required
 def filtrar(request):
     if request.method == 'POST':
         nombre = request.POST['nombre']
@@ -77,6 +79,12 @@ def filtrar(request):
         return render(request, 'filtrar.html')
     else:
         return HttpResponse('Ha ocurrido un problema')
-    
+@login_required
+def salir(request):
+    logout(request)
+    messages.info(request,f"Tu sesión se ha cerrado correctamente")
+    # messages.success(request, f"Sesión terminada")
+    # return redirect('/')
+    return render(request, 'index.html')
 
 

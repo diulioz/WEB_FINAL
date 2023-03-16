@@ -1,3 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %} CREAR {% endblock %}
+{% block contenido %} 
+<h1>Busqueda por Filtro</h1>
+        <hr>
+        <form action="/filtrar " method="post">
+            {% csrf_token %}
+              <label for="nombre" >Nombre/Apellido</label><br>
+              <input type="text" id="nombre" name="nombre" value="{{ nombre }}"><br>
+              <label for="dept">Sección</label><br>
+              <input type="text" id="dept" name="dept" value="{{ dept }}"><br>
+              <label for="rol" >Rol</label><br>
+              <input type="text" id="rol" name="rol" value="{{ rol }}"><br>
+              <hr>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+          </form>
+      </div>
+{% endblock %}
 <!doctype html>
 <html lang="en">
   <head>

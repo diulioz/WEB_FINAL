@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %} Inicio de sesión {% endblock %}
+
+{% block contenido %}
+
+{% if form.errors %}
+<p> Your username and password didn't match. Please try again</p>
+
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina. Para continuar,
+        porfavor logeate con una cuenta que tenga acceso.
+    </p>
+    {% else %}
+    <p>Por favor logeate para mirar esta pagina.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+<div class="card-body">
+    <td>{{ form.username.label_tag}}</td>
+    <br>
+    <td>{{form.username}}</td>
+</div>
+<br>
+<div class="card-body">
+    <td>{{ form.password.label_tag}}</td>
+    <br>
+    <td>{{ form.password }}</td>
+</div>
+<br>
+<div>
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{{ next }}">
+</div>
+</form>
+<br>
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password</a></p>
+{% endblock %}
