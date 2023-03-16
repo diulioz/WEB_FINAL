@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Empleado, Departamento, Rol
 from django.db.models import Q
-# from .forms import LibroForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout
@@ -26,7 +25,11 @@ def todos(request):
     return render(request, 'todos.html', informacion)
 
 def empezar(request):
-    return render(request, 'index.html')
+    empleados = Empleado.objects.all()
+    informacion = {
+        'empleados': empleados
+    }
+    return render(request, 'todos.html', informacion)
 
 @login_required
 def agregar(request):
