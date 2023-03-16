@@ -1,7 +1,9 @@
 {% extends "base.html" %}
-{% block titulo %} CREAR {% endblock %}
+{% block titulo %} Filtrar {% endblock %}
 {% block contenido %} 
-<h1>Busqueda por Filtro</h1>
+<center>
+<h1>Búsqueda por Filtro</h1>
+</center>
         <hr>
         <form action="/filtrar " method="post">
             {% csrf_token %}

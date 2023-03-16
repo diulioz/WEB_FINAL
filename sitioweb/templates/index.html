@@ -1,11 +1,19 @@
 {% extends "base.html" %}
-{% block titulo %} INCIO {% endblock %}
+{% block titulo %} INICIO {% endblock %}
 {% block contenido %}
 <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Bienvenidos al Gestor de Nomina</h1>
-        <a name="" id="" class="btn btn-primary" href="{% url 'empezar' %}" role="button">Consultar</a>
+        <center> 
+        <h1 class="display-5 fw-bold">Bienvenidos al Gestor de Nómina</h1>
+        <br>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuserscontent2.emaze.com%2Fimages%2Fb29715dc-a647-4467-9ed0-f0643fda6b71%2F7fc6b9c6581c4a94bc35e89b2b39499b.png&f=1&nofb=1&ipt=584986a1a47bada423b97d03556daf411d4dcef0b430f406296d5d8bdaa49a9e&ipo=images" alt="" width="400px" height="400px">
+        </center>
     </div>
+    <div>
+        <center>
+            <a name="" id="" class="btn btn-primary" href="{% url 'todos' %}" role="button">Consultar</a>
+        </center>
+        </div>
 </div> 
 {% endblock %}
 
