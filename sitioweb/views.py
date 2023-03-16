@@ -16,6 +16,7 @@ def inicio(request):
 
 def autores(request):
     return render(request, 'autores.html')
+
 @login_required
 def todos(request):
     empleados = Empleado.objects.all()
@@ -23,6 +24,9 @@ def todos(request):
         'empleados': empleados
     }
     return render(request, 'todos.html', informacion)
+
+def empezar(request):
+    return render(request, 'index.html')
 
 @login_required
 def agregar(request):
@@ -36,7 +40,7 @@ def agregar(request):
         rol = int(request.POST['rol'])
         empNuevo = Empleado(nombreE=nombreE, apellido=apellido, salario=salario, bono=bono, numeroCel=numeroCel, dept_id = dept, rol_id=rol, fechaContra=datetime.now())
         empNuevo.save()  
-        return HttpResponse('Empleado Agregado Correctamente')  
+        return redirect('todos')
     elif request.method=='GET':
         return render(request, 'agregar.html')
     else:
@@ -48,7 +52,7 @@ def remover(request, emp_id=0):
         try:
             empRemover = Empleado.objects.get(id=emp_id)
             empRemover.delete()
-            return HttpResponse("Eliminación correcta")
+            return redirect('todos')
         except:
             return HttpResponse("Entre un ID correcto")
     empleados = Empleado.objects.all()
@@ -57,6 +61,7 @@ def remover(request, emp_id=0):
     }
 
     return render(request, 'remover.html', informacion)
+
 @login_required
 def filtrar(request):
     if request.method == 'POST':
@@ -79,6 +84,7 @@ def filtrar(request):
         return render(request, 'filtrar.html')
     else:
         return HttpResponse('Ha ocurrido un problema')
+    
 @login_required
 def salir(request):
     logout(request)
