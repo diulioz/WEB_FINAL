@@ -58,16 +58,16 @@ def remover(request, emp_id=0):
 
 def filtrar(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        nombre = request.POST['nombre']
         dept = request.POST['dept']
         rol = request.POST['rol']
         empleados = Empleado.objects.all()
-        if name:
-            empleados = empleados.filter(Q(nombreE__icontains = name) | Q(apellido__icontains = name))
+        if nombre:
+            empleados = empleados.filter(Q(nombreE__icontains = nombre) | Q(apellido__icontains = nombre))
         if dept:
-            empleados = empleados.filter(dept = dept)
+            empleados = empleados.filter(dept__nombreD__icontains = dept)
         if rol:
-            empleados = empleados.filter(rol = rol)
+            empleados = empleados.filter(rol__nombreR__icontains = rol)
 
         informacion = {
         'empleados':empleados
