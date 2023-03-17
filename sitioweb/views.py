@@ -9,7 +9,7 @@ from django.contrib import messages
 from datetime import datetime
 
 # Create your views here.
-@login_required
+
 def inicio(request):
     return render(request, 'index.html')
 
